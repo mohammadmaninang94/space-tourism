@@ -84,13 +84,15 @@ select {
 }
 
 /* remove animations for peaople who've turned them off */
-*,
-*::before,
-*::after {
-  animation-duration: 0.01ms !important;
-  animation-iteration-count: 1 !important;
-  transition-duration: 0.01ms !important;
-  scroll-behavior: auto !important;
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* ------------------------------ */
@@ -237,3 +239,72 @@ select {
   color: hsl(var(--clr-white) / 0.25);
   font-weight: bold;
 }
+
+/* ------------------------------ */
+/* Custom properties              */
+/* ------------------------------ */
+
+.large-button {
+  position: relative;
+  display: grid;
+  z-index: 1;
+  place-items: center;
+  aspect-ratio: 1;
+  padding: 0 2em;
+  border-radius: 50%;
+  text-decoration: none;
+}
+
+.large-button::after {
+  position: absolute;
+  z-index: -1;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: hsl(var(--clr-white) / 0.15);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.5s linear, transform 0.5s ease-in-out;
+}
+
+.large-button:hover::after,
+.large-button:focus::after {
+  opacity: 1;
+  transform: scale(1.5);
+}
+
+.primary-navigation {
+  --gap: 8rem;
+  --underline-gap: 2.2rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.primary-navigation a {
+  text-decoration: none;
+}
+
+.primary-navigation a > span {
+  font-weight: 700;
+  margin-right: 11px;
+}
+
+.underline-indicators > * {
+  padding: var(--underline-gap, 0.5rem) 0;
+  border-bottom: 3px solid hsl(var(--clr-white) / 0);
+}
+
+.underline-indicators > *:hover,
+.underline-indicators > *:focus,
+.underline-indicators > *:active {
+  cursor: pointer;
+  border-color: hsl(var(--clr-white) / .5);;
+}
+
+
+.underline-indicators > .active {
+  border-color: hsl(var(--clr-white));
+  cursor: default;
+}
+
