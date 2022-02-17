@@ -126,14 +126,26 @@
         <div>
           <nav>
             <ul class="primary-navigation underline-indicators flex">
-              <li class="active"><a href="#" class="uppercase text-white fs-300 letter-spacing-2"><span>00</span> Active</a></li>
-              <li><a href="#" class="uppercase text-white fs-300 letter-spacing-2"><span>01</span> Hovered</a></li>
-              <li><a href="#" class="uppercase text-white fs-300 letter-spacing-2"><span>02</span> Idle</a></li>
+              <li class="active">
+                <a href="#" class="uppercase text-white fs-300 letter-spacing-2"
+                  ><span>00</span> Active</a
+                >
+              </li>
+              <li>
+                <a href="#" class="uppercase text-white fs-300 letter-spacing-2"
+                  ><span>01</span> Hovered</a
+                >
+              </li>
+              <li>
+                <a href="#" class="uppercase text-white fs-300 letter-spacing-2"
+                  ><span>02</span> Idle</a
+                >
+              </li>
             </ul>
           </nav>
         </div>
 
-        <div class="flex">
+        <div class="flex" style="--gap: 10rem">
           <div class="flow" style="margin-top: 5rem">
             <!-- explore button -->
             <div>
@@ -144,12 +156,55 @@
               >
             </div>
           </div>
-          <div style="margin-bottom: 50vh">
+          <div class="flow" style="margin-bottom: 50vh; --flow-space: 4rem">
             <!-- Tabs -->
-
+            <div class="tab-list underline-indicators flex">
+              <button
+                aria-selected="true"
+                type="button"
+                class="text-light ff-sans-cond fs-300 letter-spacing-2 uppercase"
+              >
+                Moon
+              </button>
+              <button
+                aria-selected="false"
+                type="button"
+                class="text-light ff-sans-cond fs-300 letter-spacing-2 uppercase"
+              >
+                Mars
+              </button>
+              <button
+                aria-selected="false"
+                type="button"
+                class="text-light ff-sans-cond fs-300 letter-spacing-2 uppercase"
+              >
+                Europa
+              </button>
+            </div>
             <!-- Dots -->
-
+            <div class="dot-indicators flex">
+              <button aria-selected="true">
+                <span class="sr-only">Slide title</span>
+              </button>
+              <button aria-selected="false">
+                <span class="sr-only">Slide title</span>
+              </button>
+              <button aria-selected="false">
+                <span class="sr-only">Slide title</span>
+              </button>
+            </div>
             <!-- Numbers -->
+            <div class="number-indicators flex">
+              <button aria-selected="true" class="ff-serif fs-600 text-white">
+                1
+              </button>
+              <button aria-selected="false" class="ff-serif fs-600 text-white">
+                2
+              </button>
+              <button aria-selected="false" class="ff-serif fs-600 text-white">
+                3
+              </button>
+            </div>
           </div>
         </div>
       </section>

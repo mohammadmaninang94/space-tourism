@@ -291,20 +291,81 @@ select {
 }
 
 .underline-indicators > * {
+  cursor: pointer;
   padding: var(--underline-gap, 0.5rem) 0;
+  border: none;
   border-bottom: 3px solid hsl(var(--clr-white) / 0);
 }
 
 .underline-indicators > *:hover,
 .underline-indicators > *:focus,
 .underline-indicators > *:active {
-  cursor: pointer;
-  border-color: hsl(var(--clr-white) / .5);;
+  border-color: hsl(var(--clr-white) / 0.5);
 }
 
-
-.underline-indicators > .active {
+.underline-indicators > .active,
+.underline-indicators > [aria-selected="true"] {
   border-color: hsl(var(--clr-white));
+  color: hsl(var(--clr-white));
   cursor: default;
 }
 
+.tab-list {
+  --gap: 2rem;
+  --underline-gap: 0.75rem;
+}
+
+.tab-list > * {
+  padding: var(--underline-gap, 1rem) 0;
+  background-color: transparent;
+}
+
+.dot-indicators {
+  --gap: 1rem;
+}
+
+.dot-indicators > * {
+  cursor: pointer;
+  width: 1rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: none;
+  background-color: hsl(var(--clr-white) / 0.25);
+}
+
+.dot-indicators > *:hover,
+.dot-indicators > *:active,
+.dot-indicators > *:focus {
+  background-color: hsl(var(--clr-white) / 0.5);
+}
+
+.dot-indicators > [aria-selected="true"] {
+  cursor: default;
+  background-color: hsl(var(--clr-white));
+}
+
+.number-indicators {
+  --gap: 1rem;
+}
+
+.number-indicators > * {
+  cursor: pointer;
+  width: 5rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 1px solid hsl(var(--clr-white) / 0.25);
+  background-color: hsl(var(--clr-dark));
+}
+
+.number-indicators > *:hover,
+.number-indicators > *:active,
+.number-indicators > *:focus {
+  border-color: hsl(var(--clr-white) / 0.5);
+}
+
+.number-indicators > [aria-selected="true"] {
+  cursor: default;
+  color: hsl(var(--clr-dark));
+  border-color: hsl(var(--clr-white));
+  background-color: hsl(var(--clr-white));
+}
