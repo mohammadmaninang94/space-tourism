@@ -11,12 +11,12 @@
 
   /* font-sizes */
 
-  --fs-900: 9.375rem; /*  150px */
-  --fs-800: 6.25rem; /*  100px */
-  --fs-700: 3.5rem; /*  56px */
-  --fs-600: 2rem; /*  32px */
-  --fs-500: 1.75rem; /*  28px */
-  --fs-400: 1.125rem; /*  18px */
+  --fs-900: clamp(5rem, 10vw + 1rem, 9.375rem); /*  min 80px max 150px*/
+  --fs-800: 3.5rem; /*  56px */
+  --fs-700: 1.5rem; /*  24px */
+  --fs-600: 1.25rem; /*  20px */
+  --fs-500: 1rem; /*  16px */
+  --fs-400: 0.9375rem; /*  15px */
   --fs-300: 1rem; /*  16px */
   --fs-200: 0.875rem; /*  14px */
 
@@ -25,6 +25,27 @@
   --ff-serif: "Bellefair", serif;
   --ff-sans-cond: "Barlow Condensed", sans-serif;
   --ff-sans-normal: "Barlow", sans-serif;
+}
+
+@media only screen and (min-width: 35em) {
+  :root {
+    /* font-sizes */
+    --fs-800: 5rem; /*  80px */
+    --fs-700: 2.5rem; /*  40px */
+    --fs-600: 1.5rem; /*  24px */
+    --fs-500: 1rem; /*  16px */
+  }
+}
+
+@media only screen and (min-width: 45em) {
+  :root {
+    /* font-sizes */
+    --fs-800: 6.25rem; /*  100px */
+    --fs-700: 3.5rem; /*  56px */
+    --fs-600: 2rem; /*  32px */
+    --fs-500: 1.75rem; /*  16px */
+    --fs-400: 1.125rem; /*  18px */
+  }
 }
 
 /* ------------------------------ */
@@ -114,6 +135,10 @@ select {
   gap: var(--gap, 1rem);
 }
 
+.d-block {
+  display: block;
+}
+
 .flow > *:where(:not(:first-child)) {
   margin-top: var(--flow-space, 2.5rem);
 }
@@ -129,27 +154,52 @@ select {
 }
 
 .grid-container {
+  text-align: center;
   display: grid;
-  gap: var(--container-gap, 2em);
-  /* grid-template-columns: 1.5rem 1fr 1.5rem; */
+  place-items: center;
+  padding-inline: 1rem;
 }
 
-@media only screen and (min-width: 45em) {
+.grid-container p {
+  max-width: 39ch;
+  margin-top: 1rem;
+}
+
+@media only screen and (min-width: 35em) {
+  .grid-container p {
+    max-width: 49ch;
+    margin-top: 2rem;
+  }
+}
+
+@media only screen and (min-width: 49em) {
   .grid-container {
+    text-align: left;
     display: grid;
     gap: var(--container-gap, 2em);
-    grid-template-columns: minmax(2rem, 1fr) repeat(2, minmax(0, 40rem)) minmax(
-        2rem,
+    grid-template-columns: minmax(3rem, 1fr) repeat(2, minmax(0, 40rem)) minmax(
+        3rem,
         1fr
       );
   }
 
   .grid-container > *:first-child {
     grid-column: 2;
+    justify-self: start;
   }
 
   .grid-container > *:last-child {
     grid-column: 3;
+    justify-self: end;
+  }
+
+  .grid-container p {
+    max-width: 45ch;
+  }
+
+  .home .grid-container {
+    padding-bottom: max(6rem, 20vh);
+    align-items: end;
   }
 }
 
@@ -210,13 +260,19 @@ select {
 }
 
 .letter-spacing-1 {
-  letter-spacing: 4.725px;
-}
-.letter-spacing-2 {
   letter-spacing: 2.7px;
 }
-.letter-spacing-3 {
-  letter-spacing: 2.35px;
+
+@media only screen and (min-width: 45em) {
+  .letter-spacing-1 {
+    letter-spacing: 4.725px;
+  }
+  .letter-spacing-2 {
+    letter-spacing: 2.7px;
+  }
+  .letter-spacing-3 {
+    letter-spacing: 2.35px;
+  }
 }
 
 .uppercase {
@@ -273,12 +329,13 @@ select {
 /* ------------------------------ */
 
 .large-button {
+  width: clamp(9.375rem, 30vw + 1rem, 17.125rem);
   position: relative;
-  display: INLINE-grid;
+  display: inline-grid;
   z-index: 1;
   place-items: center;
   aspect-ratio: 1;
-  padding: 0 2em;
+  /* padding: 0 2em; */
   border-radius: 50%;
   text-decoration: none;
 }
@@ -396,4 +453,41 @@ select {
   color: hsl(var(--clr-dark));
   border-color: hsl(var(--clr-white));
   background-color: hsl(var(--clr-white));
+}
+
+/* ------------------------------ */
+/* Page specific                  */
+/* ------------------------------ */
+
+/* home */
+
+body {
+  background-position: bottom center;
+  background-size: cover;
+}
+
+.home {
+  background-image: url(./assets/home/background-home-mobile.jpg);
+}
+
+@media only screen and (min-width: 35em) {
+  .home {
+    background-image: url(./assets/home/background-home-tablet.jpg);
+  }
+}
+
+@media only screen and (min-width: 49em) {
+  .home {
+    background-image: url(./assets/home/background-home-desktop.jpg);
+  }
+}
+
+.home h1 span {
+  margin-top: 1rem;
+}
+
+@media only screen and (min-width: 35em) {
+  .home h1 span {
+    margin-top: 2rem;
+  }
 }
