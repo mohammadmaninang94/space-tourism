@@ -17,7 +17,7 @@
   --fs-600: 1.25rem; /*  20px */
   --fs-500: 1rem; /*  16px */
   --fs-400: 0.9375rem; /*  15px */
-  --fs-300: 1rem; /*  16px */
+  --fs-300: 0.875rem; /*  14px */
   --fs-200: 0.875rem; /*  14px */
 
   /* font families */
@@ -37,14 +37,15 @@
   }
 }
 
-@media only screen and (min-width: 45em) {
+@media only screen and (min-width: 49em) {
   :root {
     /* font-sizes */
     --fs-800: 6.25rem; /*  100px */
     --fs-700: 3.5rem; /*  56px */
     --fs-600: 2rem; /*  32px */
-    --fs-500: 1.75rem; /*  16px */
+    --fs-500: 1.75rem; /*  28px */
     --fs-400: 1.125rem; /*  18px */
+    --fs-300: 1rem; /*  16px */
   }
 }
 
@@ -153,56 +154,6 @@ select {
   max-width: 80rem;
 }
 
-.grid-container {
-  text-align: center;
-  display: grid;
-  place-items: center;
-  padding-inline: 1rem;
-}
-
-.grid-container p {
-  max-width: 39ch;
-  margin-top: 1rem;
-}
-
-@media only screen and (min-width: 35em) {
-  .grid-container p {
-    max-width: 49ch;
-    margin-top: 2rem;
-  }
-}
-
-@media only screen and (min-width: 49em) {
-  .grid-container {
-    text-align: left;
-    display: grid;
-    gap: var(--container-gap, 2em);
-    grid-template-columns: minmax(3rem, 1fr) repeat(2, minmax(0, 40rem)) minmax(
-        3rem,
-        1fr
-      );
-  }
-
-  .grid-container > *:first-child {
-    grid-column: 2;
-    justify-self: start;
-  }
-
-  .grid-container > *:last-child {
-    grid-column: 3;
-    justify-self: end;
-  }
-
-  .grid-container p {
-    max-width: 45ch;
-  }
-
-  .home .grid-container {
-    padding-bottom: max(6rem, 20vh);
-    align-items: end;
-  }
-}
-
 .sr-only {
   position: absolute;
   width: 1px;
@@ -223,7 +174,7 @@ select {
   padding: 0.5em 1em;
   margin-inline: auto;
   transform: translateY(-100%);
-  transition: transform .25s ease-in;
+  transition: transform 0.25s ease-in;
 }
 
 .skip-to-content:focus {
@@ -279,7 +230,7 @@ select {
 }
 
 .letter-spacing-2 {
-  letter-spacing: 2.7px;
+  letter-spacing: 2.36px;
 }
 
 @media only screen and (min-width: 45em) {
@@ -338,7 +289,7 @@ select {
 }
 
 .numbered-title span {
-  margin-right: 1.5rem;
+  margin-right: 1rem;
   color: hsl(var(--clr-white) / 0.25);
   font-weight: bold;
 }
@@ -449,6 +400,10 @@ select {
   .primary-navigation a > span {
     display: none;
   }
+
+  .numbered-title span {
+    margin-right: 1rem;
+  }
 }
 
 @media only screen and (min-width: 49em) {
@@ -497,9 +452,9 @@ select {
     transform: translateX(0);
   }
 
-  .underline-indicators > * {
+  /* .underline-indicators > * {
     border: none;
-  }
+  } */
 
   .mobile-nav-toggle {
     display: block;
@@ -533,11 +488,19 @@ select {
 .tab-list {
   --gap: 2rem;
   --underline-gap: 0.75rem;
+  justify-content: space-evenly;
 }
 
 .tab-list > * {
   padding: var(--underline-gap, 1rem) 0;
   background-color: transparent;
+}
+
+@media only screen and (min-width: 49em) {
+  .tab-list {
+    --gap: 2rem;
+    justify-content: flex-start;
+  }
 }
 
 .dot-indicators {
@@ -596,7 +559,7 @@ select {
 
 /* home */
 
-body {
+body.home {
   background-position: bottom center;
   background-size: cover;
 }
@@ -624,5 +587,178 @@ body {
 @media only screen and (min-width: 35em) {
   .home h1 span {
     margin-top: 2rem;
+  }
+}
+
+/* destination */
+
+body.destination {
+  background-position: center;
+  background-size: cover;
+}
+
+.destination {
+  background-image: url(./assets/destination/background-destination-mobile.jpg);
+}
+
+.destination .fs-500 {
+  font-size: 1.75rem;
+}
+
+.distance-box {
+  --gap: 2rem;
+  border-top: 1px solid hsl(var(--clr-white) / 0.25);
+  margin-top: 2rem;
+  padding-top: 2rem;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+
+@media only screen and (min-width: 35em) {
+  .destination {
+    background-image: url(./assets/destination/background-destination-tablet.jpg);
+  }
+
+  .distance-box {
+    margin-top: 3.5rem;
+    flex-direction: row;
+    justify-content: space-evenly;
+    --gap: 0rem;
+  }
+}
+
+@media only screen and (min-width: 49em) {
+  .destination {
+    background-image: url(./assets/destination/background-destination-desktop.jpg);
+  }
+
+  .distance-box {
+    justify-content: flex-start;
+    --gap: min(6vw, 6rem);
+    /* --gap: clamp(3rem, 6vw, 6rem); */
+  }
+}
+
+/* ------------------------------ */
+/* Grid container layout          */
+/* ------------------------------ */
+
+.grid-container {
+  text-align: center;
+  display: grid;
+  place-items: center;
+  padding-inline: 1rem;
+  gap: 2rem;
+  padding-bottom: 4rem;
+}
+
+.grid-container p {
+  max-width: 39ch;
+}
+
+.numbered-title {
+  grid-area: title;
+}
+
+/* destination */
+
+.grid-container--destination {
+  --flow-space: 1rem;
+  grid-template-areas:
+    "title"
+    "image"
+    "tabs"
+    "content";
+}
+
+.grid-container--destination > .planet-image {
+  grid-area: image;
+  width: 50%;
+}
+
+.grid-container--destination > .tab-list {
+  grid-area: tabs;
+}
+
+.grid-container--destination > .destination-details {
+  grid-area: content;
+}
+
+@media only screen and (min-width: 35em) {
+  .grid-container--destination {
+    padding-inline: 2.5rem;
+  }
+
+  .grid-container--destination > .numbered-title {
+    margin-block: 2rem;
+    justify-self: start;
+  }
+
+  .grid-container--destination > .planet-image {
+    width: 45%;
+  }
+
+  .grid-container--home p {
+    max-width: 49ch;
+    /* margin-top: 2rem; */
+  }
+
+  .grid-container--destination p {
+    max-width: 64ch;
+  }
+}
+
+@media only screen and (min-width: 49em) {
+  .grid-container {
+    text-align: left;
+    display: grid;
+    gap: var(--container-gap, 2em);
+    grid-template-columns: minmax(3rem, 1fr) repeat(2, minmax(0, 40rem)) minmax(
+        3rem,
+        1fr
+      );
+    align-content: start;
+  }
+
+  .grid-container p {
+    max-width: 45ch;
+  }
+
+  .grid-container--home {
+    padding-bottom: max(6rem, 20vh);
+    align-items: end;
+  }
+
+  .grid-container--home > *:first-child {
+    grid-column: 2;
+    justify-self: start;
+  }
+
+  .grid-container--home > *:last-child {
+    grid-column: 3;
+    justify-self: end;
+  }
+
+  .grid-container--destination {
+    padding-inline: 0;
+    grid-template-areas:
+      ". title title ."
+      ". image tabs ."
+      ". image content .";
+  }
+
+  .grid-container--destination > .planet-image {
+    width: 70%;
+    align-self: center;
+  }
+
+  .grid-container--destination > .tab-list {
+    align-self: start;
+    justify-self: start;
+  }
+
+  .grid-container--destination > .destination-details {
+    align-self: start;
+    justify-self: start;
   }
 }
