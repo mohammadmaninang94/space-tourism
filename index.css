@@ -14,7 +14,7 @@
   --fs-900: clamp(5rem, 10vw + 1rem, 9.375rem); /*  min 80px max 150px*/
   --fs-800: 3.5rem; /*  56px */
   --fs-700: 1.5rem; /*  24px */
-  --fs-600: 1.25rem; /*  20px */
+  --fs-600: 1rem; /*  16px */
   --fs-500: 1rem; /*  16px */
   --fs-400: 0.9375rem; /*  15px */
   --fs-300: 0.875rem; /*  14px */
@@ -205,6 +205,9 @@ select {
 }
 .text-white {
   color: hsl(var(--clr-white));
+}
+.text-white-fade {
+  color: hsl(var(--clr-white) / .5);
 }
 
 /* borders */
@@ -509,7 +512,7 @@ select {
 
 .dot-indicators > * {
   cursor: pointer;
-  width: 1rem;
+  width: 10px;
   aspect-ratio: 1;
   border-radius: 50%;
   border: none;
@@ -525,6 +528,12 @@ select {
 .dot-indicators > [aria-selected="true"] {
   cursor: default;
   background-color: hsl(var(--clr-white));
+}
+
+@media only screen and (min-width: 49em) {
+  .dot-indicators > * {
+    width: 15px;
+  }
 }
 
 .number-indicators {
@@ -639,6 +648,29 @@ body.destination {
   }
 }
 
+/* crew */
+
+body.crew {
+  background-position: bottom center;
+  background-size: cover;
+}
+
+.crew {
+  background-image: url(./assets/crew/background-crew-mobile.jpg);
+}
+
+@media only screen and (min-width: 35em) {
+  .crew {
+    background-image: url(./assets/crew/background-crew-tablet.jpg);
+  }
+}
+
+@media only screen and (min-width: 49em) {
+  .crew {
+    background-image: url(./assets/crew/background-crew-desktop.jpg);
+  }
+}
+
 /* ------------------------------ */
 /* Grid container layout          */
 /* ------------------------------ */
@@ -647,7 +679,7 @@ body.destination {
   text-align: center;
   display: grid;
   place-items: center;
-  padding-inline: 1rem;
+  padding-inline: 1.5rem;
   gap: 2rem;
   padding-bottom: 4rem;
 }
@@ -662,7 +694,8 @@ body.destination {
 
 /* destination */
 
-.grid-container--destination {
+.grid-container--destination,
+.grid-container--crew {
   --flow-space: 1rem;
   grid-template-areas:
     "title"
@@ -671,20 +704,36 @@ body.destination {
     "content";
 }
 
-.grid-container--destination > .planet-image {
+.grid-container--destination > picture {
   grid-area: image;
   width: 50%;
 }
 
-.grid-container--destination > .tab-list {
+.grid-container--destination > .tab-list,
+.grid-container--crew > .dot-indicators {
   grid-area: tabs;
 }
 
-.grid-container--destination > .destination-details {
+.grid-container--destination > .destination-details,
+.grid-container--crew > .crew-details {
   grid-area: content;
 }
 
+/* destination */
+
+.grid-container--crew > .crew-picture {
+  grid-area: image;
+  border-bottom: 1px solid hsl(var(--clr-white) / 0.25);
+  justify-items: center;
+}
+
+.grid-container--crew > .crew-picture picture {
+  width: 52%;
+}
+
 @media only screen and (min-width: 35em) {
+  /* destination */
+
   .grid-container--destination {
     padding-inline: 2.5rem;
   }
@@ -698,6 +747,34 @@ body.destination {
     width: 45%;
   }
 
+  /* crew */
+
+  .grid-container--crew {
+    padding-inline: 2.5rem;
+    /* gap: 0; */
+    grid-template-areas:
+      "title"
+      "content"
+      "tabs"
+      "image";
+    padding-bottom: 0;
+  }
+
+  .grid-container--crew > .numbered-title {
+    margin-block: 2rem;
+    justify-self: start;
+  }
+
+  .grid-container--crew > .crew-picture {
+    border: none;
+  }
+
+  .grid-container--crew > .crew-picture picture {
+    width: 85%;
+  }
+
+  /* paragraphs  */
+
   .grid-container--home p {
     max-width: 49ch;
     /* margin-top: 2rem; */
@@ -706,6 +783,10 @@ body.destination {
   .grid-container--destination p {
     max-width: 64ch;
   }
+
+  .grid-container--crew p {
+    max-width: 51ch;
+  }
 }
 
 @media only screen and (min-width: 49em) {
@@ -713,8 +794,8 @@ body.destination {
     text-align: left;
     display: grid;
     gap: var(--container-gap, 2em);
-    grid-template-columns: minmax(3rem, 1fr) repeat(2, minmax(0, 40rem)) minmax(
-        3rem,
+    grid-template-columns: minmax(7rem, 1fr) repeat(2, minmax(0, 40rem)) minmax(
+        7rem,
         1fr
       );
     align-content: start;
@@ -739,6 +820,8 @@ body.destination {
     justify-self: end;
   }
 
+  /* crew */
+
   .grid-container--destination {
     padding-inline: 0;
     grid-template-areas:
@@ -760,5 +843,26 @@ body.destination {
   .grid-container--destination > .destination-details {
     align-self: start;
     justify-self: start;
+  }
+
+  /* crew */
+
+  .grid-container--crew {
+    padding-inline: 0;
+    grid-template-areas:
+      ". title image ."
+      ". content image ."
+      ". tabs image .";
+    place-items: start;
+  }
+
+  .grid-container--crew > .crew-picture {
+    place-self: stretch;
+    width: max-content;
+    align-self: end;
+  }
+
+  .grid-container--crew > .crew-picture picture {
+    width: 100%;
   }
 }

@@ -19,9 +19,9 @@
     />
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="index.css" />
-    <title>Frontend Mentor | Space tourism Destination Page</title>
+    <title>Frontend Mentor | Space tourism Crew Page</title>
   </head>
-  <body class="destination">
+  <body class="crew">
     <a class="skip-to-content" href="#main">Skip to content</a>
     <header class="primary-header flex">
       <div>
@@ -47,13 +47,13 @@
               ><span aria-hidden="true">00</span> Home</a
             >
           </li>
-          <li class="active">
+          <li >
             <a
               href="destination.html"
               class="ff-sans-cond uppercase text-white fs-300 letter-spacing-2"
               ><span aria-hidden="true">01</span> Destination</a
             >
-          </li>
+          </li class="active">
           <li>
             <a
               href="crew.html"
@@ -71,71 +71,42 @@
         </ul>
       </nav>
     </header>
-    <main id="main" class="grid-container grid-container--destination">
-      <h1 class="numbered-title"><span>01</span>Pick your destination</h1>
-      <picture class="planet-image">
-        <source
-          type="image/png"
-          srcset="./assets/destination/image-moon.webp"
-        />
-        <img src="./assets/destination/image-moon.png" alt="Moon" />
-      </picture>
-      <div class="tab-list underline-indicators flex">
-        <button
-          aria-selected="true"
-          type="button"
-          class="text-light ff-sans-cond fs-300 letter-spacing-2 uppercase"
-        >
-          Moon
+    <main id="main" class="grid-container grid-container--crew">
+      <h1 class="numbered-title"><span>02</span>Meet your crew</h1>
+      <div class="crew-picture grid">
+        <picture>
+          <source
+            type="image/png"
+            srcset="./assets/crew/image-douglas-hurley.webp"
+          />
+          <img
+            src="./assets/crew/image-douglas-hurley.png"
+            alt="Commander Douglas Hurley"
+          />
+        </picture>
+      </div>
+      <div class="dot-indicators flex">
+        <button aria-selected="true">
+          <span class="sr-only">Commander</span>
         </button>
-        <button
-          aria-selected="false"
-          type="button"
-          class="text-light ff-sans-cond fs-300 letter-spacing-2 uppercase"
-        >
-          Mars
+        <button aria-selected="false">
+          <span class="sr-only">Mission Specialist</span>
         </button>
-        <button
-          aria-selected="false"
-          type="button"
-          class="text-light ff-sans-cond fs-300 letter-spacing-2 uppercase"
-        >
-          Europa
+        <button aria-selected="false">
+          <span class="sr-only">Pilot</span>
         </button>
-        <button
-          aria-selected="false"
-          type="button"
-          class="text-light ff-sans-cond fs-300 letter-spacing-2 uppercase"
-        >
-          Titan
+        <button aria-selected="false">
+          <span class="sr-only">Flight Engineer</span>
         </button>
       </div>
-      <article class="destination-details flow">
-        <h2 class="ff-serif fs-800 uppercase text-white">Moon</h2>
+      <article class="crew-details flow">
+        <h3 class="uppercase fs-600 text-white-fade ff-serif">Commander</h3>
+        <h2 class="uppercase fs-700 ff-serif">Douglas Hurley</h2>
         <p class="text-light">
-          See our planet as you’ve never seen it before. A perfect relaxing trip
-          away to help regain perspective and come back refreshed. While you’re
-          there, take in some history by visiting the Luna 2 and Apollo 11
-          landing sites.
+          Douglas Gerald Hurley is an American engineer, former Marine Corps
+          pilot and former NASA astronaut. He launched into space for the third
+          time as commander of Crew Dragon Demo-2.
         </p>
-        <div class="distance-box flex">
-          <div>
-            <h3
-              class="ff-sans-cond fs-200 uppercase letter-spacing-3 text-light"
-            >
-              Avg. Distance
-            </h3>
-            <p class="ff-serif fs-500 uppercase">384,400 km</p>
-          </div>
-          <div>
-            <h3
-              class="ff-sans-cond fs-200 uppercase letter-spacing-3 text-light"
-            >
-              Est. travel time
-            </h3>
-            <p class="ff-serif fs-500 uppercase">3 days</p>
-          </div>
-        </div>
       </article>
     </main>
     <script type="text/javascript" src="./index.js"></script>
