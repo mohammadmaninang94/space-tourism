@@ -148,6 +148,10 @@ select {
   margin-bottom: 0.5rem;
 }
 
+.flow-space-small {
+  --flow-space: 1rem;
+}
+
 .container {
   padding-inline: 2em;
   margin-inline: auto;
@@ -206,8 +210,8 @@ select {
 .text-white {
   color: hsl(var(--clr-white));
 }
-.text-white-fade {
-  color: hsl(var(--clr-white) / .5);
+.text-white-2 {
+  color: hsl(var(--clr-white) / 0.5);
 }
 
 /* borders */
@@ -611,7 +615,7 @@ body.destination {
 }
 
 .destination .fs-500 {
-  font-size: 1.75rem;
+  font-size: min(1.75rem, 3vw);
 }
 
 .distance-box {
@@ -653,6 +657,7 @@ body.destination {
 body.crew {
   background-position: bottom center;
   background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .crew {
@@ -682,6 +687,7 @@ body.crew {
   padding-inline: 1.5rem;
   gap: 2rem;
   padding-bottom: 4rem;
+  align-content: start;
 }
 
 .grid-container p {
@@ -706,16 +712,14 @@ body.crew {
 
 .grid-container--destination > picture {
   grid-area: image;
-  width: 50%;
+  max-width: 50%;
 }
 
-.grid-container--destination > .tab-list,
-.grid-container--crew > .dot-indicators {
+.grid-container--destination > .tab-list {
   grid-area: tabs;
 }
 
-.grid-container--destination > .destination-details,
-.grid-container--crew > .crew-details {
+.grid-container--destination > .destination-details {
   grid-area: content;
 }
 
@@ -728,7 +732,7 @@ body.crew {
 }
 
 .grid-container--crew > .crew-picture picture {
-  width: 52%;
+  max-width: 52%;
 }
 
 @media only screen and (min-width: 35em) {
@@ -751,7 +755,6 @@ body.crew {
 
   .grid-container--crew {
     padding-inline: 2.5rem;
-    /* gap: 0; */
     grid-template-areas:
       "title"
       "content"
@@ -770,7 +773,7 @@ body.crew {
   }
 
   .grid-container--crew > .crew-picture picture {
-    width: 85%;
+    max-width: 85%;
   }
 
   /* paragraphs  */
@@ -794,11 +797,10 @@ body.crew {
     text-align: left;
     display: grid;
     gap: var(--container-gap, 2em);
-    grid-template-columns: minmax(7rem, 1fr) repeat(2, minmax(0, 40rem)) minmax(
-        7rem,
+    grid-template-columns: minmax(2rem, 1fr) repeat(2, minmax(0, 35rem)) minmax(
+        2rem,
         1fr
       );
-    align-content: start;
   }
 
   .grid-container p {
@@ -808,6 +810,7 @@ body.crew {
   .grid-container--home {
     padding-bottom: max(6rem, 20vh);
     align-items: end;
+    align-content: center;
   }
 
   .grid-container--home > *:first-child {
@@ -832,7 +835,7 @@ body.crew {
 
   .grid-container--destination > .planet-image {
     width: 70%;
-    align-self: center;
+    align-self: start;
   }
 
   .grid-container--destination > .tab-list {
@@ -849,6 +852,10 @@ body.crew {
 
   .grid-container--crew {
     padding-inline: 0;
+    grid-template-columns: minmax(2rem, 1fr) minmax(0, 40rem) minmax(0, 30rem) minmax(
+        2rem,
+        1fr
+      );
     grid-template-areas:
       ". title image ."
       ". content image ."
@@ -857,12 +864,20 @@ body.crew {
   }
 
   .grid-container--crew > .crew-picture {
-    place-self: stretch;
-    width: max-content;
-    align-self: end;
+    place-self: end stretch;
+    grid-column: span 2;
   }
 
   .grid-container--crew > .crew-picture picture {
-    width: 100%;
+    max-width: 80%;
+  }
+
+  .grid-container--crew > .dot-indicators {
+    grid-area: tabs;
+  }
+
+  .grid-container--crew > .crew-details {
+    --flow-space: 2.5rem;
+    grid-area: content;
   }
 }

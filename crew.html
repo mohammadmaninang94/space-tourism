@@ -76,7 +76,7 @@
       <div class="crew-picture grid">
         <picture>
           <source
-            type="image/png"
+            type="image/webp"
             srcset="./assets/crew/image-douglas-hurley.webp"
           />
           <img
@@ -85,23 +85,25 @@
           />
         </picture>
       </div>
-      <div class="dot-indicators flex">
-        <button aria-selected="true">
+      <div class="dot-indicators flex" role="tablist" aria-label="crew member list">
+        <button aria-selected="true" role="tab" tabindex="0" data-role="Commander">
           <span class="sr-only">Commander</span>
         </button>
-        <button aria-selected="false">
+        <button aria-selected="false" role="tab" tabindex="-1" data-role="Mission Specialist">
           <span class="sr-only">Mission Specialist</span>
         </button>
-        <button aria-selected="false">
+        <button aria-selected="false" role="tab" tabindex="-1" data-role="Pilot">
           <span class="sr-only">Pilot</span>
         </button>
-        <button aria-selected="false">
+        <button aria-selected="false" role="tab" tabindex="-1" data-role="Flight Engineer">
           <span class="sr-only">Flight Engineer</span>
         </button>
       </div>
       <article class="crew-details flow">
-        <h3 class="uppercase fs-600 text-white-fade ff-serif">Commander</h3>
-        <h2 class="uppercase fs-700 ff-serif">Douglas Hurley</h2>
+        <header class="crew-title flow flow-space-small">
+          <h3 class="uppercase fs-600 text-white-2 ff-serif">Commander</h3>
+          <h2 class="uppercase fs-700 ff-serif">Douglas Hurley</h2>
+        </header>
         <p class="text-light">
           Douglas Gerald Hurley is an American engineer, former Marine Corps
           pilot and former NASA astronaut. He launched into space for the third
@@ -109,6 +111,8 @@
         </p>
       </article>
     </main>
-    <script type="text/javascript" src="./index.js"></script>
+    <script type="text/javascript" src="./navigation.js"></script>
+    <script type="text/javascript" src="./assets/data/crews.js"></script>
+    <script type="text/javascript" src="./crew.js"></script>
   </body>
 </html>

@@ -75,16 +75,19 @@
       <h1 class="numbered-title"><span>01</span>Pick your destination</h1>
       <picture class="planet-image">
         <source
-          type="image/png"
+          type="image/webp"
           srcset="./assets/destination/image-moon.webp"
         />
         <img src="./assets/destination/image-moon.png" alt="Moon" />
       </picture>
-      <div class="tab-list underline-indicators flex">
+      <div class="tab-list underline-indicators flex" role="tablist">
         <button
           aria-selected="true"
           type="button"
           class="text-light ff-sans-cond fs-300 letter-spacing-2 uppercase"
+          role="tab"
+          data-name="Moon"
+          tabindex="0"
         >
           Moon
         </button>
@@ -92,6 +95,9 @@
           aria-selected="false"
           type="button"
           class="text-light ff-sans-cond fs-300 letter-spacing-2 uppercase"
+          role="tab"
+          data-name="Mars"
+          tabindex="-1"
         >
           Mars
         </button>
@@ -99,6 +105,9 @@
           aria-selected="false"
           type="button"
           class="text-light ff-sans-cond fs-300 letter-spacing-2 uppercase"
+          role="tab"
+          data-name="Europa"
+          tabindex="-1"
         >
           Europa
         </button>
@@ -106,6 +115,9 @@
           aria-selected="false"
           type="button"
           class="text-light ff-sans-cond fs-300 letter-spacing-2 uppercase"
+          role="tab"
+          data-name="Titan"
+          tabindex="-1"
         >
           Titan
         </button>
@@ -138,6 +150,8 @@
         </div>
       </article>
     </main>
-    <script type="text/javascript" src="./index.js"></script>
+    <script type="text/javascript" src="./navigation.js"></script>
+    <script type="text/javascript" src="./assets/data/destinations.js"></script>
+    <script type="text/javascript" src="./destination.js"></script>
   </body>
 </html>
