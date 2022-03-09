@@ -45,6 +45,7 @@ const changeTabPanel = (e) => {
     articleTravel.textContent = destination.travel;
     planetImage.querySelector('source').setAttribute('srcset', destination.images.webp);
     planetImage.querySelector('img').setAttribute('src', destination.images.png);
+    planetImage.querySelector('img').setAttribute('alt', destination.name);
 
     const previousTab = document.querySelector('[role="tab"][aria-selected="true"]');
     previousTab.setAttribute('aria-selected', false);

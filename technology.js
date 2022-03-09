@@ -5,18 +5,21 @@ let tabFocus = 0;
 const changeTabFocus = (e) => {
     const keydownLeft = 37;
     const keydownRight = 39;
+    const keydownUp = 38;
+    const keydownDown = 40;
 
-    if (e.keyCode === keydownLeft || e.keyCode === keydownRight) {
+    if (e.keyCode === keydownLeft || e.keyCode === keydownRight ||
+        e.keyCode === keydownUp || e.keyCode === keydownDown) {
         tabs[tabFocus].setAttribute("tabindex", -1);
 
-        if (e.keyCode === keydownRight) {
+        if (e.keyCode === keydownRight ||
+            e.keyCode === keydownDown) {
             tabFocus++;
             if (tabFocus >= tabs.length) {
                 tabFocus = 0;
             }
-        }
-
-        if (e.keyCode === keydownLeft) {
+        } else if (e.keyCode === keydownLeft ||
+            e.keyCode === keydownUp) {
             tabFocus--;
             if (tabFocus < 0) {
                 tabFocus = tabs.length - 1;
@@ -30,20 +33,18 @@ const changeTabFocus = (e) => {
 
 const changeTabPanel = (e) => {
     const targetTab = e.target;
-    const targetRole = targetTab.getAttribute('data-role');
-    const crew = crews[targetRole];
-    const article = document.querySelector('.crew-details');
-    const articleRole = article.querySelector('h3');
+    const targetName = targetTab.getAttribute('data-name');
+    const technology = technologies[targetName];
+    const article = document.querySelector('.technology-details');
     const articleName = article.querySelector('h2');
-    const articleDescription = article.querySelector('p');
+    const articleDescription = article.querySelector('.technology-description');
     const picture = document.querySelector('picture');
 
-    articleRole.textContent = crew.role;
-    articleName.textContent = crew.name;
-    articleDescription.textContent = crew.bio;
-    picture.querySelector('source').setAttribute('srcset', crew.images.webp);
-    picture.querySelector('img').setAttribute('src', crew.images.png);
-    picture.querySelector('img').setAttribute('alt', crew.name);
+    articleName.textContent = technology.name;
+    articleDescription.textContent = technology.description;
+    picture.querySelector('source').setAttribute('srcset', technology.images.portrait);
+    picture.querySelector('img').setAttribute('src', technology.images.landscape);
+    picture.querySelector('img').setAttribute('alt', technology.name);
 
     const previousTab = document.querySelector('[role="tab"][aria-selected="true"]');
     previousTab.setAttribute('aria-selected', false);
